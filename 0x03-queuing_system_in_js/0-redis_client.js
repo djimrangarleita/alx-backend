@@ -3,7 +3,7 @@ import { createClient } from "redis";
 let client;
 
 if (client === undefined) {
-  client = createClient();
+   client = createClient();
 
   client.on('connect', () => {
     console.log('Redis client connected to the server');
