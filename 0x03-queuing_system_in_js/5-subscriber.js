@@ -21,6 +21,5 @@ subscriber.on('message', (_, message) => {
   if (message === 'KILL_SERVER') {
     subscriber.unsubscribe();
     subscriber.quit();
-    return;
   }
 });

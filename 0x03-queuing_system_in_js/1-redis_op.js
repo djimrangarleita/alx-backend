@@ -1,9 +1,9 @@
-import redis from "redis";
+import redis from 'redis';
 
 let client;
 
 if (client === undefined) {
-   client = redis.createClient();
+  client = redis.createClient();
 
   client.on('connect', () => {
     console.log('Redis client connected to the server');
@@ -20,7 +20,7 @@ const setNewSchool = (schoolName, value) => {
     return;
   }
   client.set(schoolName, value, redis.print);
-}
+};
 
 const displaySchoolValue = (schoolName) => {
   client.get(schoolName, (err, reply) => {
@@ -29,7 +29,7 @@ const displaySchoolValue = (schoolName) => {
     }
     console.log(reply);
   });
-}
+};
 
 displaySchoolValue('Holberton');
 setNewSchool('HolbertonSanFrancisco', '100');

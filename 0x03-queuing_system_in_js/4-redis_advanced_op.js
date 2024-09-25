@@ -1,17 +1,17 @@
-import redis from "redis";
+import redis from 'redis';
 
 let client;
 const data = [
-  {key: 'Portland', value: 50},
-  {key: 'Seattle', value: 80},
-  {key: 'New York', value: 20},
-  {key: 'Bogota', value: 20},
-  {key: 'Cali', value: 40},
-  {key: 'Paris', value: 2},
+  { key: 'Portland', value: 50 },
+  { key: 'Seattle', value: 80 },
+  { key: 'New York', value: 20 },
+  { key: 'Bogota', value: 20 },
+  { key: 'Cali', value: 40 },
+  { key: 'Paris', value: 2 },
 ];
 
 if (client === undefined) {
-   client = redis.createClient();
+  client = redis.createClient();
 
   client.on('connect', () => {
     console.log('Redis client connected to the server');
@@ -28,7 +28,7 @@ const setHash = (hkey, { key, value }) => {
     return;
   }
   client.hset(hkey, key, value, redis.print);
-}
+};
 
 const getHashAll = (hkey) => {
   client.hgetall(hkey, (err, reply) => {
@@ -37,7 +37,7 @@ const getHashAll = (hkey) => {
     }
     console.log(reply);
   });
-}
+};
 
 data.forEach((item) => setHash('HolbertonSchools', item));
 

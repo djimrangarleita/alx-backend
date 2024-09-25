@@ -1,10 +1,10 @@
-import redis from "redis";
+import redis from 'redis';
 import { promisify } from 'util';
 
 let client;
 
 if (client === undefined) {
-   client = redis.createClient();
+  client = redis.createClient();
 
   client.on('connect', () => {
     console.log('Redis client connected to the server');
@@ -23,7 +23,7 @@ const setNewSchool = (schoolName, value) => {
     return;
   }
   client.set(schoolName, value, redis.print);
-}
+};
 
 const displaySchoolValue = async (schoolName) => {
   if (!schoolName) {
@@ -36,7 +36,7 @@ const displaySchoolValue = async (schoolName) => {
   } catch (error) {
     console.error(error);
   }
-}
+};
 
 displaySchoolValue('Holberton');
 setNewSchool('HolbertonSanFrancisco', '100');
